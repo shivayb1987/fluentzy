@@ -1,9 +1,15 @@
 import React, { PropTypes } from 'react'
-// import GSs from './GSs'
-import GSs from './QuestionTags'
-import { setInterval, setTimeout, clearInterval } from 'timers';
-import './App.css'
-import './animate.css'
+import styled from 'styled-components'
+
+const UnitsComponent = styled.div`
+  text-align: center;
+  font-size: 20px;
+  /* transition-timing-function: ease;
+  transition-duration: 1s;
+  animation: customAnimation 1s infinite; */
+  font-weight: bold;
+  color: ${props => props.color}
+`
 export default class Units extends React.Component {
   constructor () {
     super()
@@ -22,21 +28,23 @@ export default class Units extends React.Component {
       4: "orangered",
       5: "blue",
       6: "brown",
-      7: "violet",
       8: "palegreen",
-      9: "pink",
       10: "salmon"
     }
   }
 
   updateSentence = () => {
+    const { value } = this.props
+    if (!value.key.length) {
+      return
+    }
     let index = this.state.index
-    let next = (index + 1) % GSs.key.length
+    let next = (index + 1) % value.key.length
     if (this.props.shuffled) {
-      next = Math.floor(Math.random() * GSs.key.length)
+      next = Math.floor(Math.random() * value.key.length)
     }
     const color = next % (Object.keys(this.colors).length)
-    const sentence = GSs["key"][index]
+    const sentence = value["key"][index] || ''
     this.setState({
       sentence,
       previous: this.state.sentence,
@@ -46,21 +54,24 @@ export default class Units extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    clearInterval(this.id)
+    this.id && clearInterval(this.id)
     if (!nextProps.paused) {
         this.id = setInterval(this.updateSentence, nextProps.speed)
+        if (nextProps.section !== this.props.section) {
+          this.setState({
+            index: 0
+          })
+        }
     }
   }
 
   render () {
-    // const classNames = ["Units", "animated", "bounce", "infinite"]
-    const classNames = ["Units"]
+    const { sentence, color } = this.state
     return (
-      <div className={classNames.join(" ")}>
-        {/* <input ref={field => this.field = field}/> */}
-        <span className={this.state.color}>{this.state.sentence.split('+').map(question => <div>{question}</div>)}</span>
+      <UnitsComponent color={color}>
+        <span>{sentence.split('+').map((question, key) => <div key={key}>{question}</div>)}</span>
         {/* <div>{this.state.previous}</div> */}
-      </div>
+      </UnitsComponent>
     )
   }
 }
