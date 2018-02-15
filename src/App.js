@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react'
-import Units from './Units'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
-import {sections} from './metadata/sections'
-
+import Units from './Units'
+import sections from './Config'
+import Dummy from './Dummy'
 const AppComponent = styled.div`
   display: flex;
+  margin-bottom: 20px;
 `
-
 const Section = styled.div`
   margin: 10px;
   border: 1px solid dotted;
@@ -23,7 +24,7 @@ const Header = styled.div`
 `
 const AppArea = styled.div`
   text-align: center;
-  margin: 50px 0px 0 0px;
+  margin: 20px 0px 0 0px;
   font-size: 20px;
   font-weight: bold;
   flex: 2;
@@ -38,12 +39,14 @@ const Span = styled.span`
   font-weight: bold;
   font-size: 12px;
 `
-export default class App extends React.Component {
+class App extends React.Component {
   constructor () {
     super()
     this.state = {
       speed: 1000,
-      paused: false
+      paused: false,
+      component: Dummy,
+      section: {}
     }
   }
 
@@ -63,9 +66,11 @@ export default class App extends React.Component {
         this.decrease()
       }
     })
-    this.props.onClick(sections[0].replace(/ /g, ''))
+    const { name, component } = sections[0]
+    this.props.onClick(name.replace(/ /g, ''))
     this.setState({
-      section: sections[0]
+      section: name,
+      component
     })
   }
 
@@ -93,22 +98,23 @@ export default class App extends React.Component {
     })
   }
 
-  onSectionClick = (section) => {
-    this.props.onClick(section.replace(/ /g, ''))
+  onSectionClick = ({name, component}) => {
+    this.props.onClick(name.replace(/ /g, ''))
     this.setState({
-      section
+      section: name,
+      component
     })
   }
 
   render () {
-    const { speed, paused, shuffled, section } = this.state
+    const { speed, paused, shuffled, section, component } = this.state
     const { onClick } = this.props
     return <span>
       <Span>Excerpts from Prof. Kev Nair's Fluentzy: Fluency Development  (<a href='http://fluentzy.com/' target='_blank'>fluentzy.com</a>)</Span>
       <AppComponent>
         <Section>
           <div>Click a topic to begin!</div>
-          {sections.map((sec, index) => <Header key={index} selected={sec === section} onClick={() => this.onSectionClick(sec)}>{sec}</Header>)}
+          {sections.map((sec, index) => <Header key={index} selected={sec.name === section} onClick={() => this.onSectionClick(sec)}>{sec.name}</Header>)}
         </Section>
         <AppArea>
             <div className='plus' onClick={this.shuffle}>&#128256;</div>
@@ -117,10 +123,23 @@ export default class App extends React.Component {
             <Control className='minus' onClick={this.increase}>-</Control>
         </AppArea>
       </AppComponent>
-      <Units value={this.props.value} section={section} speed={speed} paused={paused} shuffled={shuffled}/>
+      {React.createElement(component, {
+        value: this.props.value,
+        section,
+        speed,
+        paused,
+        shuffled
+      })}
       </span>
   }
 }
 
 App.propTypes = {
 }
+const s = state => ({
+  value: state
+})
+const d = dispatch => ({
+  onClick: (payload) => dispatch({type: 'HANDLE_REQUEST', payload})
+})
+export default connect(s, d)(App)

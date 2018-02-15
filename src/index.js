@@ -1,31 +1,13 @@
-import partial from 'lodash/partial'
-
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore, applyMiddleware } from 'redux'
-import createSagaMiddleware from 'redux-saga'
-import sagas from './sagas'
+import { Provider } from 'react-intl-redux'
 
-import App from './App'
-import reducer from './reducers'
+import store from './store'
+import App from './router'
 
-const sagaMiddleware = createSagaMiddleware()
-const store = createStore(
-  reducer,
-  applyMiddleware(sagaMiddleware)
-)
-sagaMiddleware.run(sagas)
-
-const action = (type, payload) => store.dispatch({type, payload})
-
-function render () {
-  ReactDOM.render(
-    <App
-      value={store.getState()}
-      onClick={partial(action, 'HANDLE_REQUEST')} />,
-    document.getElementById('root')
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+document.getElementById('root')
   )
-}
-
-render()
-store.subscribe(render)

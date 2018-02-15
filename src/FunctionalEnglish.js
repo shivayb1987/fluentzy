@@ -1,21 +1,24 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 
-const UnitsComponent = styled.div`
+const FunctionalComponent = styled.div`
   text-align: center;
   font-size: 20px;
   /* transition-timing-function: ease;
   transition-duration: 1s;
   animation: customAnimation 1s infinite; */
   font-weight: bold;
+`
+const Sentence = styled.div`
   color: ${props => props.color}
 `
-export default class Units extends React.Component {
+export default class Functional extends React.Component {
   constructor () {
     super()
     this.state = {
       sentence: '',
       index: 0,
+      topicIndex: 0,
       color: 'red',
       filter: '',
       speed: 1000
@@ -35,20 +38,26 @@ export default class Units extends React.Component {
 
   updateSentence = () => {
     const { value } = this.props
-    if (!value.key.length) {
+    let { topicIndex } = this.state
+    const length = Object.keys(value).length
+    if (!length) {
       return
     }
     let index = this.state.index
-    let next = (index + 1) % value.key.length
-    if (this.props.shuffled) {
-      next = Math.floor(Math.random() * value.key.length)
+    const key = Object.keys(value)[topicIndex]
+    const sentence = value[key][index] || ''
+    let next = index + 1
+    if (next >= value[key].length) {
+      topicIndex = (topicIndex + 1) % Object.keys(value).length,
+      next = 0
     }
     const color = next % (Object.keys(this.colors).length)
-    const sentence = value["key"][index] || ''
     this.setState({
       sentence,
       previous: this.state.sentence,
       index: next,
+      topicIndex,
+      topic: key,
       color: this.colors[color]
     })
   }
@@ -59,30 +68,33 @@ export default class Units extends React.Component {
         this.id = setInterval(this.updateSentence, nextProps.speed)
         if (nextProps.section !== this.props.section) {
           this.setState({
-            index: 0
+            index: 0,
+            topicIndex: 0
           })
         }
     }
-  }
-
-  componentWillUnmount () {
-    clearInterval(this.id)
+    if (nextProps.shuffled) {
+      let topicIndex = Math.floor(Math.random() * Object.keys(this.props.value).length)
+      this.setState({
+        topicIndex
+      })
+    }
   }
 
   render () {
-    const { sentence, color } = this.state
+    const { sentence, color, topic } = this.state
     return (
-      <UnitsComponent color={color}>
-        <span>{sentence.split('+').map((question, key) => <div key={key}>{question}</div>)}</span>
-        {/* <div>{this.state.previous}</div> */}
-      </UnitsComponent>
+        <FunctionalComponent>
+          <div>{topic}</div>
+          <Sentence color={color}>{sentence.split('+').map((question, key) => <div key={key}>{question}</div>)}</Sentence>
+        </FunctionalComponent>
     )
   }
 }
 
-Units.propTypes = {
+Functional.propTypes = {
 }
 
-Units.defaultProps = {
+Functional.defaultProps = {
     speed: 1000
 }
