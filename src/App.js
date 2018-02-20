@@ -11,8 +11,10 @@ const AppComponent = styled.div`
 const Section = styled.div`
   margin: 10px;
   border: 1px solid dotted;
-  height: 150px;
+  height: 250px;
   overflow: auto;
+  margin-bottom: 10px;
+  cursor: pointer;
 `
 const Header = styled.div`
   padding: 5px;
@@ -21,6 +23,10 @@ const Header = styled.div`
   cursor: pointer;
   border: 1px dotted;
   background-color: ${props => props.selected? 'lightblue': 'lightyellow'};
+`
+const SubHeader = styled(Header)`
+  padding: 5px 10px;
+  color: blue;
 `
 const AppArea = styled.div`
   text-align: center;
@@ -31,8 +37,9 @@ const AppArea = styled.div`
 `
 const Control = styled.div`
   cursor: pointer;
-  padding: 5px 0;
-  font-size: 30px;
+  padding: 1px 0;
+  font-size: 20px;
+  color: brown;
 `
 const Span = styled.span`
   color: orange;
@@ -46,7 +53,8 @@ class App extends React.Component {
       speed: 1000,
       paused: false,
       component: Dummy,
-      section: {}
+      section: {},
+      expanded: false
     }
   }
 
@@ -66,7 +74,8 @@ class App extends React.Component {
         this.decrease()
       }
     })
-    const { name, component } = sections[0]
+    const {component: components} = sections[0]
+    const { name, component } = components[0]
     this.props.onClick(name.replace(/ /g, ''))
     this.setState({
       section: name,
@@ -75,14 +84,15 @@ class App extends React.Component {
   }
 
   increase = () => {
+    const { speed } = this.state
     this.setState({
-      speed: this.state.speed + 200
+      speed: speed + 500
     })
   }
 
   decrease = () => {
     this.setState({
-      speed: this.state.speed > 0 ? this.state.speed - 200 : 1000
+      speed: this.state.speed > 0 ? this.state.speed - 500 : 1000
     })
   }
 
@@ -99,28 +109,49 @@ class App extends React.Component {
   }
 
   onSectionClick = ({name, component}) => {
-    this.props.onClick(name.replace(/ /g, ''))
-    this.setState({
-      section: name,
-      component
-    })
+    const { section } = this.state
+    if (component instanceof Array) {
+      this._subSubSections = component.map((sec, index) => <SubHeader selected={sec.name === section} key={`sub${index}`} onClick={() => this.onSectionClick(sec)}>{sec.name}</SubHeader>)
+      this.setState({
+        expanded: !this.state.expanded,
+        expandedSection: name
+      })
+    } else {
+      this.props.onClick(name.replace(/ /g, ''))
+      this.setState({
+        section: name,
+        component,
+        shuffled: false
+      })
+    }
+  }
+
+  getSections = () => {
+    const { section, expanded, expandedSection } = this.state
+    return sections.map((sec, index) => (
+      <div>
+        <Header key={index} selected={sec.name === section} onClick={() => this.onSectionClick(sec)}>{sec.name}</Header>
+        {sec.name === expandedSection && expanded && this._subSubSections}
+      </div>
+    ))
   }
 
   render () {
-    const { speed, paused, shuffled, section, component } = this.state
+    const { speed, paused, shuffled, section, expanded, component } = this.state
     const { onClick } = this.props
     return <span>
       <Span>Excerpts from Prof. Kev Nair's Fluentzy: Fluency Development  (<a href='http://fluentzy.com/' target='_blank'>fluentzy.com</a>)</Span>
       <AppComponent>
         <Section>
           <div>Click a topic to begin!</div>
-          {sections.map((sec, index) => <Header key={index} selected={sec.name === section} onClick={() => this.onSectionClick(sec)}>{sec.name}</Header>)}
+          {this.getSections()}
         </Section>
         <AppArea>
             <div className='plus' onClick={this.shuffle}>&#128256;</div>
             <span className='speed'>Speed: {this.state.speed/1000}s </span>
-            <Control className='plus' onClick={this.decrease}>+</Control>
-            <Control className='minus' onClick={this.increase}>-</Control>
+            <Control className='plus' onClick={this.decrease}>fast</Control>
+            <Control className='minus' onClick={this.increase}>slow</Control>
+            <Control className='pause' onClick={this.pause}>{paused ? "play" : "pause"} </Control>
         </AppArea>
       </AppComponent>
       {React.createElement(component, {

@@ -18,7 +18,9 @@
         "You can do much better, I’m sure.",
         "He has the ability to make decisions.",
         "She can speak Spanish fluently.",
-        "You’re capable of doing better, you know. 2. Expressing inability",
+        "You’re capable of doing better, you know."
+    ],
+    "2. Expressing inability": [
         "He cannot do it without help.",
         "She can’t speak Telugu very well.",
         "He couldn’t understand a thing she said.",
@@ -33,7 +35,9 @@
         "I can’t swim as far as you.",
         "I tried to move it, but I couldn’t.",
         "I want to come, but I’m unable to.",
-        "I’ve never been any good at repairing things. 3. Asking about ability or inability",
+        "I’ve never been any good at repairing things."
+    ],
+    "3. Asking about ability or inability": [
         "Can you swim across the river?",
         "Can you drive a car?",
         "Can you ride a bike?",
@@ -42,8 +46,9 @@
         "Were you able to solve the problem?",
         "Can’t you explain it more simply?",
         "Isn’t he able to read or write?",
-        "Is he unable to walk without crutches? 4. Accepting sth (= something) [See Function (Fn). no.18 Accepting an apology, Fn.no.67 Accepting help, Fn.no.85 Accepting an invitation, Fn.no.100 Accepting an offer of food or drink, and Fn.no.149 Agreeing to/Accepting a request. See also Fn.no.10 Expressing agreement]. 5. Expressing admiration",
-        "(See also Fn.no.21 Expressing appreciation, Fn.no.22 Expressing approval, and Fn.no.41 Complimenting sb).",
+        "Is he unable to walk without crutches?"
+    ],
+    "4. Expressing admiration": [
         "That’s the most magnificent performance I’ve ever seen!",
         "You don’t say! You mean you made it?",
         "Look at the building. Isn’t it beautiful?",
@@ -70,7 +75,9 @@
         "Oh, lovely!",
         "My!",
         "Oh, it’s the most impressive speech I’ve ever heard!",
-        "I’ve never met anyone so attractive. 6. Admitting sth",
+        "I’ve never met anyone so attractive."
+    ],
+    "6. Admitting sth": [
         "Yes, it’s possible.",
         "I’m sorry. It was a mistake on my part.",
         "Well, perhaps I should have handled it with some more care.",
@@ -98,8 +105,9 @@
         "Oh dear, I seem to have made a mistake.",
         "There’s something in what he says.",
         "I made the mistake of trusting him with money.",
-        "I had a part in that decision, too. I admit that. 7. Admonishing sb (= somebody)",
-        "(See also Fn.no.168 Warning sb).",
+        "I had a part in that decision, too. I admit that."
+    ],
+    "7. Admonishing sb (= somebody)": [
         "Don’t repeat the same mistake again.",
         "Don’t try to harass me — I’m warning you.",
         "You’ll be more careful in future, won’t you?",
@@ -115,7 +123,9 @@
         "Don’t all talk together.",
         "I wouldn’t do such a thing again, if I were you.",
         "Just be more considerate in future.",
-        "If you do this again, I’ll come down hard on you. 8. Advising sb",
+        "If you do this again, I’ll come down hard on you."
+    ],
+    "8. Advising sb": [
         "You’d better explain everything to her.",
         "You’d better not do it.",
         "If I were you, I’d leave now.",
@@ -144,7 +154,9 @@
         "I wouldn’t do it.",
         "You ought to consult a doctor before it gets worse.",
         "You’d better be quick or you’ll miss the flight.",
-        "You should stop smoking. 9. Asking for advice",
+        "You should stop smoking."
+    ],
+    "9. Asking for advice": [
         "What do you think I should do?",
         "I’m sorry to worry you with my problems, but I really do need some advice.",
         "What should I do?",
