@@ -44,7 +44,7 @@ export default class Functional extends React.Component {
   }
 
   updateSentence = () => {
-    const { value } = this.props
+    const { value, countKeys } = this.props
     let { topicIndex } = this.state
     const length = Object.keys(value).length
     if (!length) {
@@ -58,9 +58,15 @@ export default class Functional extends React.Component {
     if (next >= value[key].length) {
       topicIndex = (topicIndex + 1) % Object.keys(value).length,
       next = 0
-      count = 0
+      if (countKeys) {
+        if (next > length ) {
+          count = 0
+        }
+      } else {
+        count = 0
+      }
     }
-    const progress = (count / value[key].length)
+    const progress = (count / (countKeys ? length : value[key].length))
     const color = next % (Object.keys(this.colors).length)
     this.setState({
       sentence,
@@ -112,7 +118,7 @@ export default class Functional extends React.Component {
           }
         }
     };
-    const percent = Math.floor(progress  * 100) + '%'
+    const percent = Math.floor(progress  * 101) + '%'
     return (
         <FunctionalComponent>
         <Line progress={progress} options={options} text={percent} initialAnimate />

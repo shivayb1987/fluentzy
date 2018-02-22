@@ -75,11 +75,12 @@ class App extends React.Component {
       }
     })
     const {component: components} = sections[0]
-    const { name, component } = components[0]
+    const { name, component, ...props } = components[0]
     this.props.onClick(name.replace(/ /g, ''))
     this.setState({
       section: name,
-      component
+      component,
+      ...props
     })
   }
 
@@ -108,7 +109,7 @@ class App extends React.Component {
     })
   }
 
-  onSectionClick = ({name, component}) => {
+  onSectionClick = ({name, component, ...props}) => {
     const { section } = this.state
     if (component instanceof Array) {
       this._subSubSections = component.map((sec, index) => <SubHeader selected={sec.name === section} key={`sub${index}`} onClick={() => this.onSectionClick(sec)}>{sec.name}</SubHeader>)
@@ -121,7 +122,8 @@ class App extends React.Component {
       this.setState({
         section: name,
         component,
-        shuffled: false
+        shuffled: false,
+        ...props
       })
     }
   }
@@ -137,7 +139,7 @@ class App extends React.Component {
   }
 
   render () {
-    const { speed, paused, shuffled, section, expanded, component } = this.state
+    const { speed, paused, shuffled, section, expanded, component, ...restState } = this.state
     const { onClick } = this.props
     return <span>
       <Span>Excerpts from Prof. Kev Nair's Fluentzy: Fluency Development  (<a href='http://fluentzy.com/' target='_blank'>fluentzy.com</a>)</Span>
@@ -159,7 +161,8 @@ class App extends React.Component {
         section,
         speed,
         paused,
-        shuffled
+        shuffled,
+        ...restState
       })}
       </span>
   }

@@ -83,6 +83,7 @@ export default class Units extends React.Component {
 
   render () {
     const { sentence, color, progress } = this.state
+    const { skipSplit } = this.props
     var options = {
         strokeWidth: 1,
         trailColor: '#f4f4f4',
@@ -94,12 +95,14 @@ export default class Units extends React.Component {
           }
         }
     };
-    const percent = Math.floor(progress  * 100) + '%'
+    const percent = Math.floor(progress  * 101) + '%'
     return (
       <UnitsComponent color={color}>
         <Line progress={this.state.progress} options={options} text={percent} initialAnimate />
         {<Playing>(playing: {this.props.section})</Playing>}
-        <span>{sentence.split('+').map((question, key) => <div key={key}>{question}</div>)}</span>
+        { !skipSplit ? <span>{sentence.split('+').map((question, key) => <div key={key}>{question}</div>)}</span> :
+          <span>{sentence}</span>
+        }
       </UnitsComponent>
     )
   }

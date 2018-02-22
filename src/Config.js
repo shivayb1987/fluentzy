@@ -3,7 +3,62 @@ import Functional from './FunctionalEnglish'
 
 export default [
   {
-    name: 'General Structures',
+    name: 'Teaching Your Tongue',
+    component: [
+      {
+        name: 'Drill 1',
+        component: Units,
+        skipSplit: true
+      },
+      {
+        name: 'Drill 2',
+        component: Functional,
+        countKeys: false
+      },
+      {
+        name: 'Drill 3',
+        component: Functional,
+        countKeys: false
+      },
+      {
+        name: 'Drill 4',
+        component: Functional,
+        countKeys: false
+      },
+      {
+        name: 'Drill 5',
+        component: Functional,
+        countKeys: false
+      },
+      {
+        name: 'IrregularVerbs',
+        component: Functional,
+        countKeys: true
+      }]
+  },
+  {
+    name: 'Idea Units',
+    component: [
+      {
+        name: 'Ready To Assemble Units',
+        component: Units
+      },
+      {
+        name: 'Common Phrases In English',
+        component: Functional
+      },
+      {
+        name: 'How To Divide Speech Into Idea Units',
+        component: Functional
+      },
+      {
+        name: 'V+N Clusters',
+        component: Functional
+      }
+    ]
+  },
+  {
+    name: 'Speech Generation',
     component: [
       {
         name: 'General Structures 1',
@@ -16,6 +71,30 @@ export default [
       {
         name: 'General Structures 3',
         component: Units
+      },
+      {
+        name: 'Flow Practice',
+        component: Units
+      },
+      {
+        name: 'Essential Ready-Built Clusters',
+        component: Functional
+      },
+      {
+        name: 'Do Clusters',
+        component: Functional
+      },
+      {
+        name: 'Get Clusters',
+        component: Functional
+      },
+      {
+        name: 'Give Clusters',
+        component: Functional
+      },
+      {
+        name: 'Go Clusters',
+        component: Functional
       }
     ]
   },
