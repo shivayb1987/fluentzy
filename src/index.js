@@ -4,7 +4,6 @@ import { Provider } from 'react-intl-redux'
 
 import store from './store'
 import App from './router'
-
 ReactDOM.render(
   <Provider store={store}>
     <App />

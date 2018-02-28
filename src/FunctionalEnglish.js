@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 import { Line } from 'react-progressbar.js'
+const Button = styled.button`
+  margin-left: 20px;
+`
 
 const FunctionalComponent = styled.div`
   text-align: center;
   font-size: 20px;
-  /* transition-timing-function: ease;
-  transition-duration: 1s;
-  animation: customAnimation 1s infinite; */
   font-weight: bold;
 `
 const Sentence = styled.div`
@@ -17,6 +17,9 @@ const Playing = styled.div`
   font-size: 10px;
   color: gray;
   margin-top: 10px;
+`
+const Category = styled.div`
+  font-size: 10px;
 `
 export default class Functional extends React.Component {
   constructor () {
@@ -50,15 +53,26 @@ export default class Functional extends React.Component {
     if (!length) {
       return
     }
-    let index = this.state.index
+    let { index, reversed, count } = this.state
+    let next = reversed ? index - 1 : index + 1
+    if (next < 0) {
+      next = 0
+      this.setState({
+        reversed: false
+      })
+    }
     const key = Object.keys(value)[topicIndex]
     const sentence = value[key][index] || ''
-    let next = index + 1
-    let count = this.state.count + 1
+    /* let count = this.state.count */
+    if (!countKeys) {
+      count = count = reversed ? count -1 : count + 1
+    }
+    let subLength = countKeys ? length : value[key].length
     if (next >= value[key].length) {
       topicIndex = (topicIndex + 1) % Object.keys(value).length,
       next = 0
       if (countKeys) {
+        count = count = reversed ? count -1 : count + 1
         if (next > length ) {
           count = 0
         }
@@ -66,8 +80,10 @@ export default class Functional extends React.Component {
         count = 0
       }
     }
-    const progress = (count / (countKeys ? length : value[key].length))
+    count = count % subLength
+    const progress = (count / subLength)
     const color = next % (Object.keys(this.colors).length)
+    const color2 = (next+1) % (Object.keys(this.colors).length)
     this.setState({
       sentence,
       previous: this.state.sentence,
@@ -75,6 +91,7 @@ export default class Functional extends React.Component {
       topicIndex,
       topic: key,
       color: this.colors[color],
+      color2: this.colors[color2],
       count: count,
       progress
     })
@@ -105,8 +122,15 @@ export default class Functional extends React.Component {
     clearInterval(this.id)
   }
 
+  onPrevious = () => {
+    this.setState({
+      reversed: !this.state.reversed
+    })
+  }
+
   render () {
-    const { sentence, color, topic, progress } = this.state
+    const { sentence, color, color2, topic, progress, reversed } = this.state
+    const colors = [color, color2]
     var options = {
         strokeWidth: 1,
         trailColor: '#f4f4f4',
@@ -122,9 +146,9 @@ export default class Functional extends React.Component {
     return (
         <FunctionalComponent>
         <Line progress={progress} options={options} text={percent} initialAnimate />
-        {<Playing>(playing: {this.props.section})</Playing>}
-          <div>{topic}</div>
-          <Sentence color={color}>{sentence.split('+').map((question, key) => <div key={key}>{question}</div>)}</Sentence>
+        {<Playing>(playing: {this.props.section})<Button onClick={this.onPrevious}>{reversed ? 'Next' : 'Previous'}</Button></Playing>}
+          <Category>{topic}</Category>
+          {sentence.split('+').map((question, key) => <Sentence color={colors[key]} key={key}>{question}</Sentence>)}
         </FunctionalComponent>
     )
   }

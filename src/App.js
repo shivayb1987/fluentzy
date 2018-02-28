@@ -4,6 +4,10 @@ import styled from 'styled-components'
 import Units from './Units'
 import sections from './Config'
 import Dummy from './Dummy'
+import Timer from './Timer'
+
+const Wrap = styled.div`
+`
 const AppComponent = styled.div`
   display: flex;
   margin-bottom: 20px;
@@ -35,10 +39,10 @@ const AppArea = styled.div`
   font-weight: bold;
   flex: 2;
 `
-const Control = styled.div`
+const Control = styled.button`
+  display: block;
   cursor: pointer;
-  padding: 1px 0;
-  font-size: 20px;
+  margin: 5px 0;
   color: brown;
 `
 const Span = styled.span`
@@ -56,6 +60,7 @@ class App extends React.Component {
       section: {},
       expanded: false
     }
+    this._element = {}
   }
 
   componentDidMount () {
@@ -77,6 +82,7 @@ class App extends React.Component {
     const {component: components} = sections[0]
     const { name, component, ...props } = components[0]
     this.props.onClick(name.replace(/ /g, ''))
+    // this.onSectionClick(sections[0])
     this.setState({
       section: name,
       component,
@@ -112,12 +118,19 @@ class App extends React.Component {
   onSectionClick = ({name, component, ...props}) => {
     const { section } = this.state
     if (component instanceof Array) {
-      this._subSubSections = component.map((sec, index) => <SubHeader selected={sec.name === section} key={`sub${index}`} onClick={() => this.onSectionClick(sec)}>{sec.name}</SubHeader>)
+      this._subSubSections = component.map((sec, index) => 
+        <SubHeader
+          innerRef={element => {this._element[sec.name] = element}}
+          onClick={() => this.onSectionClick(sec)}>{sec.name}
+        </SubHeader>
+      )
       this.setState({
-        expanded: !this.state.expanded,
+        expanded: name === this.state.expandedSection ? false: true,
         expandedSection: name
       })
     } else {
+      Object.values(this._element).filter(element => element).forEach(element => element.classList.remove('active'))
+      this._element[name].classList.add("active")
       this.props.onClick(name.replace(/ /g, ''))
       this.setState({
         section: name,
@@ -132,7 +145,7 @@ class App extends React.Component {
     const { section, expanded, expandedSection } = this.state
     return sections.map((sec, index) => (
       <div>
-        <Header key={index} selected={sec.name === section} onClick={() => this.onSectionClick(sec)}>{sec.name}</Header>
+        <Header key={index} innerRef={element => {this._element[sec.name] = element}} onClick={() => this.onSectionClick(sec)}>{sec.name}</Header>
         {sec.name === expandedSection && expanded && this._subSubSections}
       </div>
     ))
@@ -141,7 +154,8 @@ class App extends React.Component {
   render () {
     const { speed, paused, shuffled, section, expanded, component, ...restState } = this.state
     const { onClick } = this.props
-    return <span>
+    return <Wrap>
+      <Timer />
       <Span>Excerpts from Prof. Kev Nair's Fluentzy: Fluency Development  (<a href='http://fluentzy.com/' target='_blank'>fluentzy.com</a>)</Span>
       <AppComponent>
         <Section>
@@ -159,12 +173,12 @@ class App extends React.Component {
       {React.createElement(component, {
         value: this.props.value,
         section,
-        speed,
+        speed: speed || 200,
         paused,
         shuffled,
         ...restState
       })}
-      </span>
+      </Wrap>
   }
 }
 

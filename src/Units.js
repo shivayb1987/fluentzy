@@ -15,6 +15,9 @@ const Playing = styled.div`
   color: gray;
   margin-top: 10px;
 `
+const Button = styled.button`
+  margin-left: 20px;
+`
 export default class Units extends React.Component {
   constructor () {
     super()
@@ -45,20 +48,31 @@ export default class Units extends React.Component {
     if (!length) {
       return
     }
-    let index = this.state.index
-    let next = (index + 1) % length
+    let { index, reversed, count } = this.state
+    let next = reversed ? index - 1 : index + 1
+    if (next < 0) {
+      next = 0
+      this.setState({
+        reversed: false
+      })
+    }
     if (this.props.shuffled) {
       next = Math.floor(Math.random() * length)
     }
     const color = next % (Object.keys(this.colors).length)
     const sentence = value["key"][index] || ''
-    const progress = (this.state.count / length)
+    count = reversed ? count -1 : count + 1
+    if (next >= length) {
+      count = 0,
+      next = 0
+    }
+    const progress = (count / length)
     this.setState({
       sentence,
       previous: this.state.sentence,
       index: next,
       color: this.colors[color],
-      count: this.state.count + 1,
+      count: count,
       progress
     })
   }
@@ -81,8 +95,14 @@ export default class Units extends React.Component {
     clearInterval(this.id)
   }
 
+  onPrevious = () => {
+    this.setState({
+      reversed: !this.state.reversed
+    })
+  }
+
   render () {
-    const { sentence, color, progress } = this.state
+    const { sentence, color, progress, reversed } = this.state
     const { skipSplit } = this.props
     var options = {
         strokeWidth: 1,
@@ -99,7 +119,7 @@ export default class Units extends React.Component {
     return (
       <UnitsComponent color={color}>
         <Line progress={this.state.progress} options={options} text={percent} initialAnimate />
-        {<Playing>(playing: {this.props.section})</Playing>}
+        {<Playing>(playing: {this.props.section})<Button onClick={this.onPrevious}>{reversed ? 'Next' : 'Previous'}</Button></Playing>}
         { !skipSplit ? <span>{sentence.split('+').map((question, key) => <div key={key}>{question}</div>)}</span> :
           <span>{sentence}</span>
         }
