@@ -1,5 +1,5 @@
 {
-    "key": [
+    "Am-initiators": [
         "Am I right in thinking...?",
         "Am I not right in supposing…?",
         "Am I the only...?",
@@ -26,7 +26,9 @@
         "Are you sure…?",
         "Are your friends…?",
         "Aren’t you tired of…?",
-        "Aren’t you...?",
+        "Aren’t you...?"
+    ],
+    "Can-initiators": [
         "Can Dad…?",
         "Can I borrow your...?",
         "Can I help...?",
@@ -78,7 +80,9 @@
         "Could you spare…?",
         "Could you wait a…?",
         "Couldn’t he be…?",
-        "Couldn’t you leave some for…?",
+        "Couldn’t you leave some for…?"
+    ],
+    "Do-initiators": [
         "Did any of you actually see the…?",
         "Did anyone ask any…?",
         "Did he have to…?",
@@ -204,7 +208,9 @@
         "Does your sister like…?",
         "Doesn’t Mary…?",
         "Doesn’t Mr. Sharma know…?",
-        "Don’t you wish you…?",
+        "Don’t you wish you…?"
+    ],
+    "Have-initiators": [
         "Had he realized…?",
         "Hadn’t we better…?",
         "Has anyone cleaned the…?",
@@ -282,7 +288,9 @@
         "Haven’t I given you…?",
         "Haven’t you been…?",
         "Haven’t you got a…?",
-        "Haven’t you heard…?",
+        "Haven’t you heard…?"
+    ],
+    "How-initiators": [
         "How can I possibly…?",
         "How can I see when…?",
         "How can they…?",
@@ -344,7 +352,9 @@
         "How often did he…?",
         "How old are…?",
         "How old is…?",
-        "How soon will…?",
+        "How soon will…?"
+    ],
+    "Is-initiators": [
         "Is it cold...?",
         "Is it less expensive…?",
         "Is it more expensive to…?",
@@ -362,12 +372,35 @@
         "Isn’t he…?",
         "Isn’t it wonderful to have…?",
         "Isn’t she…?",
+        "Was it very…?",
+        "Was the driver...?",
+        "Was there a lot to…?",
+        "Wasn’t Mozart a famous…?",
+        "Wasn’t she…?",
+        "Were father and mother…?",
+        "Were there many people at the…?",
+        "Were there…?",
+        "Were they surprised…?",
+        "Were we…?",
+        "Were you able to…?",
+        "Were you at the cinema…?",
+        "Were you trying to…?",
+        "Were you very busy…?",
+        "Were you very late…?",
+        "Weren’t you supposed to…?",
+        "Weren’t you…?"
+    ],
+    "May-initiators": [
         "May I borrow your…?",
-        "May I take…?",
+        "May I take…?"
+    ],
+    "Must-initiators": [
         "Must you always ask me what…?",
         "Must you do it all…?",
         "Must you make such a…?",
-        "Mustn’t you eat…?",
+        "Mustn’t you eat…?"
+    ],
+    "Shall-initiators": [
         "Shall I ask her to…?",
         "Shall I ask the little boy how to…?",
         "Shall I carry some of…?",
@@ -390,24 +423,9 @@
         "Should she be…?",
         "Should the man be…?",
         "Should we cut the...?",
-        "Should you say…?",
-        "Was it very…?",
-        "Was the driver...?",
-        "Was there a lot to…?",
-        "Wasn’t Mozart a famous…?",
-        "Wasn’t she…?",
-        "Were father and mother…?",
-        "Were there many people at the…?",
-        "Were there…?",
-        "Were they surprised…?",
-        "Were we…?",
-        "Were you able to…?",
-        "Were you at the cinema…?",
-        "Were you trying to…?",
-        "Were you very busy…?",
-        "Were you very late…?",
-        "Weren’t you supposed to…?",
-        "Weren’t you…?",
+        "Should you say…?"
+    ],
+    "What-initiators": [
         "What about going for…?",
         "What about going to…?",
         "What about just putting a…?",
@@ -701,7 +719,9 @@
         "Why wasn’t anyone…?",
         "Why wasn’t the car…?",
         "Why weren’t you…?",
-        "Why weren’t they…?",
+        "Why weren’t they…?"
+    ],
+    "Will-initiators": [
         "Will his mother be…?",
         "Will it be all right if…?",
         "Will Mary and you be…?",

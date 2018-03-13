@@ -1,5 +1,5 @@
 {
-    "key": [
+    "Everyday Yes-no questions": [
         "D’you want a cup of coffee before you go?",
         "D’you want a glass of water?",
         "D’you want a spanking?",
@@ -451,7 +451,9 @@
         "Would you care for some butter?",
         "Would you stop that?",
         "Would you tell me what grade I’m getting?",
-        "Wouldn’t you like to fetch it for her?",
+        "Wouldn’t you like to fetch it for her?"
+    ],
+    "Everyday Wh-questions": [
         "What brings you here?",
         "What can go wrong?",
         "What can I do for you?",

@@ -1,0 +1,62 @@
+{
+    " Equality ": [
+        "He can do it as easily as me (as I can).",
+        "They will handle it as carefully as us (as we will).",
+        "She listened to me as patiently as him (as he did).",
+        "He speaks as quietly as her (as she does).",
+        "I have done it as perfectly as them (as they have).",
+        "This has hurt me as deeply as that (as that has).",
+        "He may support me as strongly as you (as you may).",
+        "She had spoken out as boldly as Raju (as Raju had)."
+    ],
+    " Inequality ": [
+        "She can’t do it as easily as me ( as I can).",
+        "They won’t do it as satisfactorily as us (as we will).",
+        "She doesn’t work as cheerfully as him (as he does).",
+        "He hasn’t studied it as thoroughly as her (as she has).",
+        "You haven’t answered it as correctly as them (as they have).",
+        "This may not affect them as deeply as that (as that may).",
+        "They didn’t welcome us as enthusiastically as you (as you did).",
+        "You hadn’t been trying for it as steadily as Madhu (as Madhu had)."
+    ],
+    " Superiority ": [
+        "He can do it more easily (than me/I can).",
+        "They did it more cleverly (than us/we did).",
+        "She had arranged the things more tidily (than him/he had).",
+        "He types more slowly (than her/she does).",
+        "She has planned everything more wisely (than them/they have).",
+        "That has harmed them more severely (than this/this has).",
+        "He may give it up more willingly (than you/you may).",
+        "Abdul will do it more sincerely (than Tom/Tom will)."
+    ],
+    " Inferiority ": [
+        "He does it less willingly (than her/she does).",
+        "They have made the supplies less promptly (than us/we have).",
+        "She moves less swiftly (than him/he does).",
+        "He obeyed them less promptly (than me/I did).",
+        "You did it less sharply (than them/they did).",
+        "They will go there less frequently.",
+        "That happens less often (than this/this does)."
+    ],
+    " Superlative of superiority ": [
+        "He does it the most easily.",
+        "She welcomed us the most warmly.",
+        "They have guessed it the most sensibly.",
+        "We behaved the most selfishly.",
+        "You treated them the most cruelly.",
+        "Sony resigned from the post the most honourably.",
+        "He does his work the most honestly.",
+        "I took each step the most cautiously.",
+        "That was shining the most brightly."
+    ],
+    " Superlative of inferiority ": [
+        "They do it the least easily.",
+        "We spent our time there the least happily.",
+        "She accepted it the least gratefully.",
+        "He will give it to her the least gladly.",
+        "She may behave the least calmly.",
+        "He behaves the least rudely.",
+        "Ahmed was looking at it the least seriously.",
+        "I asked for it the least eagerly."
+    ]
+}
