@@ -6,7 +6,7 @@ export default [{
   component: [
     {
       name: 'Drill 1',
-      component: Units,
+      component: Functional,
       skipSplit: true
     },
     {
@@ -30,7 +30,7 @@ export default [{
       countKeys: false
     },
     {
-      name: 'IrregularVerbs',
+      name: 'Irregular Verbs',
       component: Functional,
       countKeys: true
     },
@@ -43,35 +43,35 @@ export default [{
       component: Functional
     }]
 },
-{
-  name: 'Stresswise List of Polysyllabic Words',
-  component: [
-    {
-      name: 'On First Syllable',
-      component: Functional
-    },
-    {
-      name: 'On Second Syllable',
-      component: Functional,
-      countKeys: false
-    },
-    {
-      name: 'On Third Syllable',
-      component: Functional,
-      countKeys: false
-    },
-    {
-      name: 'On Fourth Syllable',
-      component: Units
-    }
-  ]
-},
+// {
+//   name: 'Stresswise List of Polysyllabic Words',
+//   component: [
+//     {
+//       name: 'On First Syllable',
+//       component: Functional
+//     },
+//     {
+//       name: 'On Second Syllable',
+//       component: Functional,
+//       countKeys: false
+//     },
+//     {
+//       name: 'On Third Syllable',
+//       component: Functional,
+//       countKeys: false
+//     },
+//     {
+//       name: 'On Fourth Syllable',
+//       component: Units
+//     }
+//   ]
+// },
 {
   name: 'Idea Units',
   component: [
     {
       name: 'Ready To Assemble Units',
-      component: Units
+      component: Functional
     },
     {
       name: 'Common Phrases In English',
@@ -79,6 +79,10 @@ export default [{
     },
     {
       name: 'How To Divide Speech Into Idea Units',
+      component: Functional
+    },
+    {
+      name: 'Segmentation Practice',
       component: Functional
     },
     {
@@ -96,10 +100,6 @@ export default [{
     },
     {
       name: 'General Structures 2',
-      component: Units
-    },
-    {
-      name: 'General Structures 3',
       component: Units
     },
     {
@@ -154,35 +154,20 @@ export default [{
     {
       name: 'Negative Meaning',
       component: Units
+    },
+    {
+      name: 'StandardizedQuestions',
+      component: Units
+    },
+    {
+      name: 'StandardizedQuestions2',
+      component: Units
+    },
+    {
+      name: 'Everyday Questions',
+      component: Functional
     }
   ]
-},
-{
-  name: 'Word Clusters',
-  component: [{
-    name: 'Be',
-    component: Units
-  },
-  {
-    name: 'Verb Prep Clusters 1',
-    component: Units
-  },
-  {
-    name: 'Verb Prep Clusters 2',
-    component: Units
-  },
-  {
-    name: 'Across Topics',
-    component: Units
-  },
-  {
-    name: 'Noun Like Clusters',
-    component: Units
-  },
-  {
-    name: 'Manner Clusters',
-    component: Functional
-  }]
 },
 {
   name: 'How to Deal With Hesitation',
@@ -210,41 +195,357 @@ export default [{
   ]
 },
 {
-  name: 'Questions',
+  name: 'Oral Training in Fluency Vocabulary (Part 1)',
   component: [
     {
-      name: 'Questions For Every Day',
+      name: 'Place-relating Word Groups',
       component: Units
     },
     {
-      name: 'Question Initiators',
+      name: 'Time-relating Word Groups',
       component: Units
     },
     {
-      name: 'Question Tags',
+      name: 'Action Word-Groups 1',
       component: Units
     },
     {
-      name: 'StandardizedQuestions',
-      component: Units
+      name: 'Naming word groups 1',
+      component: Functional
     },
     {
-      name: 'StandardizedQuestions2',
-      component: Units
+      name: 'Phrasal Verbs 1',
+      component: Functional
     },
     {
-      name: 'Everyday Questions',
+      name: 'Adjective + Noun Combinations 1',
+      component: Functional
+    },
+    {
+      name: 'Spoken Questions - Part 1',
+      component: Functional
+    },
+    {
+      name: 'Spoken Questions - Part 2',
       component: Functional
     }
   ]
 },
 {
-  name: 'Phrasal Verbs',
-  component: Units
+  name: 'Packing of Information in Speech',
+  component: [
+    {
+      name: 'Intensifiers',
+      component: Units
+    },
+    {
+      name: 'Downtoners',
+      component: Units
+    },
+    {
+      name: 'Preposition Phrases',
+      component: Units
+    },
+    {
+      name: 'Word Clusters 1',
+      component: Functional
+    },
+    {
+      name: 'Make Clusters',
+      component: Functional
+    }
+  ]
 },
 {
-  name: 'Prompt Responses',
-  component: Units
+  name: 'Impromptu Speech-flow Techniques',
+  component: [
+    {
+      name: 'Topic–comment Arrangement',
+      component: Functional
+    },
+    {
+      name: 'Comment–topic Arrangement',
+      component: Functional
+    },
+    {
+      name: 'Repeated Reference',
+      component: Functional
+    },
+    {
+      name: 'Self-correction',
+      component: Functional
+    },
+    {
+      name: 'Arrangement in Parenthesis',
+      component: Functional
+    },
+    {
+      name: 'Fronting',
+      component: Functional
+    },
+    {
+      name: 'Appended Word Groups',
+      component: Functional
+    },
+    {
+      name: 'Fragmentary Word Groups',
+      component: Functional
+    },
+    {
+      name: 'Comment Clauses',
+      component: Functional
+    },
+    {
+      name: 'Comment Clauses in Questions',
+      component: Functional
+    },
+    {
+      name: 'Vagueness & Imprecision - Listing',
+      component: Functional
+    },
+    {
+      name: 'Vagueness & Imprecision - Approximation',
+      component: Functional
+    },
+    {
+      name: 'Vagueness & Imprecision - People & Things',
+      component: Functional
+    },
+    {
+      name: 'Vagueness & Imprecision - Quality',
+      component: Functional
+    },
+    {
+      name: 'Vagueness Through Intensification',
+      component: Functional
+    },
+    {
+      name: 'Generic Use - You & They',
+      component: Functional
+    },
+    {
+      name: 'Discourse Markers',
+      component: Functional
+    },
+    {
+      name: 'Topic Shift',
+      component: Functional
+    },
+    {
+      name: 'Nominal Expressions with of - Part 1',
+      component: Functional
+    },
+    {
+      name: 'Nominal Expressions with of - Part 2',
+      component: Functional
+    },
+    {
+      name: 'Nominal Expressions with of - Part 3',
+      component: Functional
+    }
+  ]
+},
+{
+  name: 'Fluency in Asking Questions',
+  component: [
+    {
+      name: 'Yes-No Questions',
+      component: Functional
+    },
+    {
+      name: 'Wh-Questions',
+      component: Functional
+    },
+    {
+      name: 'Everyday Wh-Questions',
+      component: Functional
+    },
+    {
+      name: 'Question Initiators',
+      component: Functional
+    },
+    {
+      name: 'Question Tags',
+      component: Functional
+    },
+    {
+      name: 'Nominal Expressions - In',
+      component: Functional
+    },
+    {
+      name: 'Nominal Expressions - On',
+      component: Functional
+    },
+    {
+      name: 'Nominal Expressions - To',
+      component: Functional
+    },
+    {
+      name: 'Nominal Expressions - For',
+      component: Functional
+    },
+    {
+      name: 'Verb-Preposition Cluster 1',
+      component: Functional
+    },
+    {
+      name: 'Verb-Preposition Cluster 2',
+      component: Functional
+    }
+  ]
+},
+{
+  name: 'Oral Training in Fluency Vocabulary (Part 2)',
+  component: [
+    {
+      name: 'Reply Expressions',
+      component: Functional
+    },
+    {
+      name: 'Manner Word Groups',
+      component: Functional
+    },
+    {
+      name: 'Frequently-used Prepositional Phrases',
+      component: Functional
+    },
+    {
+      name: 'General Structures 3',
+      component: Functional
+    },
+    {
+      name: 'Phrasal Verbs 2',
+      component: Functional
+    },
+    {
+      name: 'Adjective + Noun Word Groups 2',
+      component: Functional
+    },
+    {
+      name: 'Fixed & Semi-fixed Expressions – Part 1',
+      component: Functional
+    },
+    {
+      name: 'Fixed & Semi-fixed Expressions – Part 2',
+      component: Functional
+    },
+    {
+      name: 'Spoken Word Groups',
+      component: Functional
+    },
+    {
+      name: 'It-Clusters',
+      component: Functional
+    }
+  ]
+},
+{
+  name: 'Fluency and Moment-to-moment Speech-production',
+  component: [
+    {
+      name: 'Spoken English texts',
+      component: Functional,
+      skipSplit: true
+    },
+    {
+      name: 'Directives',
+      component: Functional
+    },
+    {
+      name: 'Directives Practice',
+      component: Functional
+    },
+    {
+      name: 'Exclamations',
+      component: Functional
+    },
+    {
+      name: 'Special Conversational Emphasis',
+      component: Functional
+    },
+    {
+      name: 'Leaving Out Words',
+      component: Functional,
+      skipSplit: false
+    },
+    {
+      name: 'Comparison of Quality',
+      component: Functional
+    },
+    {
+      name: 'Comparison of Manner',
+      component: Functional
+    },
+    {
+      name: 'Special Words for Comparision',
+      component: Functional
+    },
+    {
+      name: 'Comparison Drill 1',
+      component: Functional
+    },
+    {
+      name: 'Comparison Drill 2',
+      component: Functional
+    },
+    {
+      name: 'Comparison Drill 3',
+      component: Functional
+    },
+    {
+      name: 'Phrasal Verbs 3',
+      component: Functional
+    },
+    {
+      name: 'Adjective + Noun Word Groups 3',
+      component: Functional
+    }
+  ]
+},
+{
+  name: 'Oral Training in Fluency Vocabulary (Part 3)',
+  component: [
+    {
+      name: 'Spoken Medical English',
+      component: Functional
+    },
+    {
+      name: 'Examination Procedure',
+      component: Functional
+    },
+    {
+      name: 'Language Patients Use',
+      component: Functional
+    },
+    {
+      name: 'Spoken Medical English - General',
+      component: Functional
+    },
+    {
+      name: 'Image-building Word Groups',
+      component: Functional
+    },
+    {
+      name: 'Image-building Word Groups in Use',
+      component: Functional
+    },
+    {
+      name: 'Adjective + Noun Word Groups 3',
+      component: Functional
+    },
+    {
+      name: 'Phrasal Verbs',
+      component: Functional
+    },
+    {
+      name: 'QuestionsForEveryDay',
+      component: Functional
+    },
+    {
+      name: 'PromptResponses',
+      component: Functional
+    }
+  ]
 },
 {
   name: 'Functional English 1',

@@ -11,7 +11,8 @@ const FunctionalComponent = styled.div`
   font-weight: bold;
 `
 const Sentence = styled.div`
-  color: ${props => props.color}
+  color: ${props => props.color};
+  background-color: yellow
 `
 const Playing = styled.div`
   font-size: 10px;
@@ -131,6 +132,7 @@ export default class Functional extends React.Component {
   render () {
     const { sentence, color, color2, topic, progress, reversed } = this.state
     const colors = [color, color2]
+    const { skipSplit } = this.props
     var options = {
         strokeWidth: 1,
         trailColor: '#f4f4f4',
@@ -148,7 +150,8 @@ export default class Functional extends React.Component {
         <Line progress={progress} options={options} text={percent} initialAnimate />
         {<Playing>(playing: {this.props.section})<Button onClick={this.onPrevious}>{reversed ? 'Next' : 'Previous'}</Button></Playing>}
           <Category>{topic}</Category>
-          {sentence.split('+').map((question, key) => <Sentence color={colors[key]} key={key}>{question}</Sentence>)}
+          {!skipSplit ? sentence.split('+').map((question, key) => <Sentence color={colors[key]} key={key}>{question}</Sentence>)
+          : <Sentence color={color}>{sentence}</Sentence>}
         </FunctionalComponent>
     )
   }

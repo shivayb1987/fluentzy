@@ -54,7 +54,7 @@ class App extends React.Component {
   constructor () {
     super()
     this.state = {
-      speed: 1000,
+      speed: 2500,
       paused: false,
       component: Dummy,
       section: {},
@@ -115,7 +115,7 @@ class App extends React.Component {
     })
   }
 
-  onSectionClick = ({name, component, ...props}) => {
+  onSectionClick = ({name, component, skipSplit, ...props}) => {
     const { section } = this.state
     if (component instanceof Array) {
       this._subSubSections = component.map((sec, index) => 
@@ -125,7 +125,7 @@ class App extends React.Component {
         </SubHeader>
       )
       this.setState({
-        expanded: name === this.state.expandedSection ? false: true,
+        expanded: name === this.state.expandedSection ? !this.state.expanded: true,
         expandedSection: name
       })
     } else {
@@ -136,6 +136,7 @@ class App extends React.Component {
         section: name,
         component,
         shuffled: false,
+        skipSplit,
         ...props
       })
     }
@@ -152,7 +153,7 @@ class App extends React.Component {
   }
 
   render () {
-    const { speed, paused, shuffled, section, expanded, component, ...restState } = this.state
+    const { speed, paused, shuffled, section, expanded, component, skipSplit, ...restState } = this.state
     const { onClick } = this.props
     return <Wrap>
       <Timer />
@@ -176,6 +177,7 @@ class App extends React.Component {
         speed: speed || 200,
         paused,
         shuffled,
+        skipSplit,
         ...restState
       })}
       </Wrap>
