@@ -54,7 +54,7 @@ class App extends React.Component {
   constructor () {
     super()
     this.state = {
-      speed: 2500,
+      speed: 1500,
       paused: false,
       component: Dummy,
       section: {},
@@ -178,7 +178,8 @@ class App extends React.Component {
         paused,
         shuffled,
         skipSplit,
-        ...restState
+        ...restState,
+        pause: this.pause
       })}
       </Wrap>
   }

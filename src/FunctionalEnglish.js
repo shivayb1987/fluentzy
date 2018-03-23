@@ -12,7 +12,17 @@ const FunctionalComponent = styled.div`
 `
 const Sentence = styled.div`
   color: ${props => props.color};
-  background-color: yellow
+  background-color: yellow;
+  cursor: pointer;
+`
+const Sentences = styled.div`
+  height: 100px;
+  overflow: hidden;
+  overflow-y: auto;
+  color: ${props => props.color};
+  margin-top: 5px;
+  /* background-color: yellow; */
+  /* cursor: pointer; */
 `
 const Playing = styled.div`
   font-size: 10px;
@@ -21,6 +31,12 @@ const Playing = styled.div`
 `
 const Category = styled.div`
   font-size: 10px;
+  cursor: pointer;
+`
+const Sample = styled.div`
+  color: ${props => props.color};
+  cursor: pointer;
+  font-size: 12px;
 `
 export default class Functional extends React.Component {
   constructor () {
@@ -33,7 +49,8 @@ export default class Functional extends React.Component {
       filter: '',
       speed: 1000,
       count: 0,
-      progress: 0
+      progress: 0,
+      key: ''
     }
     this.colors = {
       0: "red",
@@ -62,13 +79,13 @@ export default class Functional extends React.Component {
         reversed: false
       })
     }
-    const key = Object.keys(value)[topicIndex]
-    const sentence = value[key][index] || ''
+    const key = this.state.key || Object.keys(value)[topicIndex]
+    const sentence = (value[key] || [])[index] || ''
     /* let count = this.state.count */
     if (!countKeys) {
       count = count = reversed ? count -1 : count + 1
     }
-    let subLength = countKeys ? length : value[key].length
+    let subLength = countKeys ? length : (value[key] || []).length
     if (next >= value[key].length) {
       topicIndex = (topicIndex + 1) % Object.keys(value).length,
       next = 0
@@ -129,9 +146,33 @@ export default class Functional extends React.Component {
     })
   }
 
+  onPause = () => {
+    this.setState({
+      puased: !this.state.paused
+    })
+  }
+
+  onSearch = (sentence, e) => {
+    const word = sentence.replace(/[ \/]/g, '-')
+    window.open(`https://www.collinsdictionary.com/dictionary/english/${sentence.replace(/[ \/]/g, '-')}`)
+    this.props.pause()
+  }
+
+  showAll = () => {
+    this.setState({
+      showAll: !this.state.showAll
+    })
+  }
+
+  onTopic = (key) => {
+    this.setState({
+      key
+    })
+  }
+
   render () {
-    const { sentence, color, color2, topic, progress, reversed } = this.state
-    const colors = [color, color2]
+    const { sentence, color, color2, topic, progress, reversed, showAll } = this.state
+    const colors = ['red', 'green']
     const { skipSplit } = this.props
     var options = {
         strokeWidth: 1,
@@ -145,13 +186,16 @@ export default class Functional extends React.Component {
         }
     };
     const percent = Math.floor(progress  * 101) + '%'
+    const examples = Object.keys(this.props.value)
     return (
         <FunctionalComponent>
-        <Line progress={progress} options={options} text={percent} initialAnimate />
-        {<Playing>(playing: {this.props.section})<Button onClick={this.onPrevious}>{reversed ? 'Next' : 'Previous'}</Button></Playing>}
-          <Category>{topic}</Category>
-          {!skipSplit ? sentence.split('+').map((question, key) => <Sentence color={colors[key]} key={key}>{question}</Sentence>)
-          : <Sentence color={color}>{sentence}</Sentence>}
+          {/* Search: <input onChange={this.onSearch} /> */}
+          <Line progress={progress} options={options} text={percent} initialAnimate />
+          {<Playing>(playing: {this.props.section})<Button onClick={this.onPrevious}>{reversed ? 'Next' : 'Previous'}</Button><Button onClick={this.showAll}>Show Headers</Button></Playing>}
+          <Category onClick={(e) => this.onSearch(topic.replace(/ vb.*/g, ''), e)}>{topic}</Category>
+            {!skipSplit ? sentence.split('+').map((question, key) => <Sentence onClick={() => this.onSearch(sentence)} color={colors[key]} key={key}>{question}</Sentence>)
+            : <Sentence onClick={() => this.onSearch(sentence)} color={color}>{sentence}</Sentence>}
+           { showAll && <Sentences>{examples.map((unit, i) => <Sample onClick={() => this.onTopic(unit)} color={colors[i%2]}>{ `${unit} `}</Sample>)}</Sentences> }
         </FunctionalComponent>
     )
   }
