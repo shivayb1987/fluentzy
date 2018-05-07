@@ -1,0 +1,98 @@
+{
+    "take up": [
+        "accept", "address", "adopt", "attack", "attend", "begin", "discuss", "do", "employ", "enter", "favour", "fill", "lift", "occupy", "pass", "protect", "raise", "receive", "reduce", "spend", "start", "strike", "study", "take", "try"
+    ],
+    "look out": [
+        "care", "expect", "guard", "listen", "mind", "notice", "wait", "watch"
+    ],
+    "take on": [
+        "bear", "compete", "contract", "cry", "deal", "develop", "do", "employ", "handle", "meet", "mind", "oppose", "sign", "store", "strike", "suffer", "train"
+    ],
+    "set out": [
+        "arrange", "attempt", "begin", "define", "describe", "detail", "discuss", "display", "dress", "give", "go", "lay", "leave", "mean", "place", "plant", "provide", "range", "report", "serve", "show", "start", "state", "strike", "travel", "try"
+    ],
+    "knock about/around": [
+        "beat", "discuss", "travel", "walk"
+    ],
+    "sneak out": [
+        "cut", "walk"
+    ],
+    "bring on": [
+        "begin", "bring", "cause", "farm", "favour", "force", "generate", "grow", "invite", "lead", "promote"
+    ],
+    "bring up": [
+        "adopt", "advance", "argue", "discipline", "drop", "form", "generate", "introduce", "mention", "nurse", "present", "produce", "quote", "raise", "refer", "remind", "stop", "support", "teach", "train"
+    ],
+    "come across": [
+        "catch", "come", "experience", "face", "find", "happen", "have", "light", "meet", "notice", "see", "strike"
+    ],
+    "pitch in": [
+        "help", "work", "start"
+    ],
+    "set off": [
+        "allow", "balance", "become", "cover", "equal", "fire", "fit", "go", "lead", "leave", "operate", "part", "produce", "ring", "shoot", "show", "sound", "start", "suit", "touch", "trip"
+    ],
+    "lay out": [
+        "arrange", "blow", "cast", "display", "give", "invest", "level", "measure", "order", "organize", "pay", "plan", "position", "programme", "project", "provide", "set", "spread", "waste"
+    ],
+    "play out": [
+        "achieve", "end", "finish"
+    ],
+    "put off": [
+        "avoid", "delay", "drop", "extend", "file", "free", "hate", "keep", "reserve", "stay", "throw", "wait"
+    ],
+    "lay on": [
+        "add", "apply", "beat", "fix", "give", "have", "impose", "programme", "put", "spread", "supply", "throw "
+    ],
+    "lay up": [
+        "collect", "hurt", "obtain", "save", "store"
+    ],
+    "check out": [
+        "agree", "consider", "examine", "explore", "follow", "leave", "observe", "screen", "try"
+    ],
+    "fall through": [
+        "collapse", "fail"
+    ],
+    "hold back": [
+        "arrest", "avoid", "check", "command?", "contain", "control", "delay", "doubt", "fight", "hide", "keep", "maintain", "pause", "prevent", "reserve", "return?", "slow", "stay", "stop", "wait"
+    ],
+    "wash your hands of": [
+        "avoid", "deny", "drop", "leave", "reject"
+    ],
+    "break up": [
+        "clear", "destroy", "divide", "drop", "end", "establish?", "hurt", "level", "separate", "split", "stop"
+    ],
+    "break down": [
+        "bomb", "break", "collapse", "crash", "cry", "destroy", "die", "divide", "examine", "fail", "fear", "investigate", "operate", "organize", "reduce", "stop", "support"
+    ],
+    "set in": [
+        "approach", "arise", "begin", "rain", "stay", "tend"
+    ],
+    "come on": [
+        "advance", "appear", "approach", "begin", "come", "develop", "discover", "enter", "gain", "happen", "improve", "increase", "meet", "progress", "rise", "threaten "
+    ],
+    "get on": [
+        "advance", "age", "arrive", "catch", "climb", "cope", "do", "dress", "hit", "gain", "progress", "rise", "survive", "wear "
+    ],
+    "give in": [
+        "back", "bend", "break", "fall"
+    ],
+    "let up": [
+        relax, release, rest, restore, stop  
+    ],
+    "hash out": [
+        conclude, discuss, settle
+    ],
+    "hammer out": [
+        agree, arrive, conclude, construct, form, produce, reach, sort, study, think
+    ],
+    "iron out": [
+        settle, sort, square
+    ],
+    "burn out": [
+        die, drive, remove, waste, work
+    ],
+    "work out": [
+        achieve, agree, arrive, bite, break, come, conlude, construct, count, develop, discover, do, exercise, explain, figure, finish, get, go, guess, happen, lay, make, perform, plan, prepare, programme, project, reach, read, realize, reckon, reduce, result, see, settle, solve, sort, square, succeed, tell, total, train, work
+    ]
+}
